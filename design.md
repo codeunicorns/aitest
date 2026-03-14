@@ -5,8 +5,8 @@ A single-page static website that displays an interactive map of Monmouth County
 
 ## Architecture
 
-### Single-file approach
-The entire application is contained in `index.html`. No build step or server is required — just open the file in a browser.
+### File separation
+HTML, CSS, and JavaScript are kept in separate files (`index.html`, `style.css`, `script.js`) for maintainability. No build step or server is required — just open `index.html` in a browser.
 
 ### Libraries
 | Library | Version | Purpose | License |
@@ -14,8 +14,8 @@ The entire application is contained in `index.html`. No build step or server is 
 | [Leaflet.js](https://leafletjs.com) | 1.9.4 | Interactive map rendering | BSD-2 |
 
 ### Tile Provider
-- **CARTO Dark Matter** (free, no API key required)  
-  `https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png`  
+- **CARTO Positron** (free, no API key required) — clean, light theme  
+  `https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png`  
   Data © OpenStreetMap contributors.
 
 ## Map Configuration
@@ -44,12 +44,14 @@ Ten curated POIs covering the major historical, cultural, and scientific landmar
   - Category badge
   - Short description (always visible)
   - "Show History" toggle button — expands/collapses a longer historical narrative without requiring page navigation
-- **Dark theme** — map and UI use a dark color scheme (`#1a1a2e` / `#16213e` / CARTO Dark Matter tiles) for a dramatic, immersive feel.
-- **No external dependencies beyond Leaflet CDN** — fully self-contained, works offline once cached.
+- **Light theme** — white/cream popups, green header, CARTO Positron tiles for a clean, readable appearance.
+- **No external dependencies beyond Leaflet CDN** — no build step, works by opening `index.html` directly.
 
 ## File Structure
 ```
-index.html   — entire application (HTML + CSS + JS inline)
+index.html   — HTML shell (structure only)
+style.css    — all styles / light theme
+script.js    — map initialization, POI data, marker & popup logic
 design.md    — this document
 AGENTS.md    — project rules
 ```
